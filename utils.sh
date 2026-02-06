@@ -1,10 +1,8 @@
 # shellcheck shell=busybox
-check_logpath() {
-    if [ -d /cache ]; then
-        LOG_PATH=/cache/bootlog
-    else
-        LOG_PATH=/data/local/bootlog
-    fi
+LOG_PATH=/cache/bootlog
+[ -d /cache ] || LOG_PATH=/data/local/bootlog
+get_prop() {
+    grep -m 1 "^$2=" "$1" | cut -d= -f2
 }
 check_unlock() {
     local TEST_DIR=/sdcard/Android
@@ -30,7 +28,7 @@ check_write() {
     done
     rm "${TEST_FILE:?}"
 }
-gettime() {
+get_time() {
     if [ -z "$1" ] || [ ! -f "$1" ]; then
         date "+%Y%m%d-%H%M%S"
         return
@@ -38,4 +36,12 @@ gettime() {
     local ts
     ts=$(stat -c %Y "$1" 2>/dev/null)
     date -d "@$ts" "+%Y%m%d-%H%M%S" 2>/dev/null || date -r "$1" "+%Y%m%d-%H%M%S"
+}
+get_model() {
+    local model marketname
+    model=$(getprop ro.product.model)
+    marketname=$(getprop ro.product.marketname)
+    [ -z "$marketname" ] && marketname="$(getprop ro.vivo.market.name)"
+    [ -n "$marketname" ] && model="$model ($marketname)"
+    echo "$model"
 }
