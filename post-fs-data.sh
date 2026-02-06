@@ -34,4 +34,6 @@ SU_VERSION=$(su -v)
     echo "${SU_VERSION#*:}: ${SU_VERSION%:*} ($(su -V))"
     echo "SELinux: $(getenforce)"
 } >>"$LOG_FILE"
-logcat -b main,system,crash -f "$LOG_FILE" logcatcher-bootlog:S &
+LOGCAT_PID_FILE=$LOG_PATH/logcat.pid
+logcat -b main,system,crash -f "$LOG_FILE" &
+echo $! >"$LOGCAT_PID_FILE"
