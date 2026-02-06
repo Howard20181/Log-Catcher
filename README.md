@@ -1,9 +1,9 @@
 # Log-Catcher
 
-Catch boot log and save to /cache/bootlog/boot.log.
+Capture the boot logs to /cache/bootlog or /data/local/bootlog if /cache does not exist.
 
-When /cache is not exist fallback to /data/local/bootlog/boot.log.
+After unlocking, package them to /sdcard/Download.
 
-This module can help you to save boot log.
+This module can help you save startup logs.
 
-If you don't want to kill the logcat process after boot completed, you can create /data/local/logcatcher/boot.lcs file.
+If you don't want to stop log catching after unlocking, create a file named `/data/local/logcatcher/boot.lcs`

@@ -1,7 +1,6 @@
 id=hwr_logcat
 name=Log Catcher
-version=v22.5
-versionCode=27
+version=v23
+versionCode=28
 author=Howard
-description=Catch boot log to /cache/boot.log.
-support=https://t.me/hzrtools
+description=Capture the boot logs to /cache/bootlog or /data/local/bootlog if /cache does not exist. After unlocking, package them to /sdcard/Download.
