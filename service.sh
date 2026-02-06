@@ -21,5 +21,5 @@ elif [ -d "$LOG_PATH/old" ]; then
     [ -f "$f" ] || continue
     [ -z "$BOOT_LOG_TIME" ] && BOOT_LOG_TIME=$(get_time "$f") && break
   done
-  [ -n "$BOOT_LOG_TIME" ] && tar -czf "$LOG_PATH/bootlog-$BOOT_LOG_TIME.tar.gz" -C "$LOG_PATH/old" . && rm -rf "${LOG_PATH:?}/old"
+  [ -n "$BOOT_LOG_TIME" ] && tar -czf "/sdcard/Download/bootlog-$BOOT_LOG_TIME.tar.gz" -C "$LOG_PATH/old" . && rm -rf "${LOG_PATH:?}/old"
 fi
