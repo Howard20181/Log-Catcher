@@ -3,4 +3,4 @@ name=Log Catcher
 version=v23
 versionCode=28
 author=Howard
-description=Capture the boot logs to /cache/bootlog or /data/local/bootlog if /cache does not exist. After unlocking, package them to /sdcard/Download.
+description=Capture the boot logs to /cache/bootlog or /data/local/bootlog if /cache does not exist. After unlocking, package them to /sdcard/Download/bootlog-**.tar.gz.
